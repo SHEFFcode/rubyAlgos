@@ -15,7 +15,7 @@ end
 
 #Recursive implementation of the largest number search
 def largest_number_recursive(arr)
-    
+
     return arr[0] if arr.length == 1
 
     if arr.length == 2
@@ -29,6 +29,8 @@ def largest_number_recursive(arr)
     return num_1 > num_2 ? num_1 : num_2
 
 end
+
+puts "Largest number is #{largest_number_recursive([1, 2, 3, 4])}"
 
 
 #Binary search with a sorted array
