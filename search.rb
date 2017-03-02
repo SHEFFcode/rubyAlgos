@@ -12,6 +12,25 @@ end
 
 #largest_number([1, 2, 3, 4])
 
+
+#Recursive implementation of the largest number search
+def largest_number_recursive(arr)
+    
+    return arr[0] if arr.length == 1
+
+    if arr.length == 2
+        return arr[0] > arr[1] ? arr[0] : arr [1]
+    end
+
+    midpoint = (arr.length - 1) / 2
+    num_1 = largest_number_recursive(arr[0..midpoint])
+    num_2 = largest_number_recursive(arr[(midpoint + 1)..(arr.length - 1)])
+
+    return num_1 > num_2 ? num_1 : num_2
+
+end
+
+
 #Binary search with a sorted array
 def binary_search (arr, target)
     min_index = 0
