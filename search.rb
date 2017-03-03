@@ -15,19 +15,19 @@ end
 
 #Recursive implementation of the largest number search
 def largest_number_recursive(arr)
-
+    
     return arr[0] if arr.length == 1
-
+    
     if arr.length == 2
         return arr[0] > arr[1] ? arr[0] : arr [1]
     end
-
+    
     midpoint = (arr.length - 1) / 2
     num_1 = largest_number_recursive(arr[0..midpoint])
     num_2 = largest_number_recursive(arr[(midpoint + 1)..(arr.length - 1)])
-
+    
     return num_1 > num_2 ? num_1 : num_2
-
+    
 end
 
 puts "Largest number is #{largest_number_recursive([1, 2, 3, 4])}"
@@ -39,7 +39,7 @@ def binary_search (arr, target)
     max_index = arr.length - 1
     
     while (min_index <= max_index)
-
+        
         midpoint = (max_index + min_index) / 2
         if (arr[midpoint] > target)
             max_index = midpoint - 1
@@ -58,3 +58,21 @@ def binary_search (arr, target)
 end
 
 binary_search([1, 2, 3, 5, 20, 40], 6)
+
+#Binary search with recursion
+def binary_search_with_recursion(arr, target, min_index = 0, max_index = arr.length - 1)
+    #If the min index is bigger then max index, we went through arr and did not find target
+    return -1 if min_index > max_index
+    
+    midpoint = (max_index + min_index) / 2
+    if (arr[midpoint] > target)
+        binary_search_with_recursion(arr, target, 0, midpoint - 1)
+    elsif (arr[midpoint] < target)
+        binary_search_with_recursion(arr, target, midpoint + 1, arr.length - 1)
+    else
+        return midpoint 
+    end
+    
+end
+
+puts binary_search_with_recursion([1, 2, 3, 5, 20, 40], 20)
