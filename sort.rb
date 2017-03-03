@@ -4,7 +4,7 @@ def bubble_sort (arr)
         index_1 = 0
         index_2 = 1
         #optimization the further down we go we more sorted the tail of the arr becomes.
-        index_final = arr.length - 1 - i
+        index_final = (arr.length - 1)
         swapped = false
 
         while index_2 <= index_final
